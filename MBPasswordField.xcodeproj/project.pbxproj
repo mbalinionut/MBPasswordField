@@ -11,6 +11,9 @@
 		C7EBC9CD1FB33EC40096A150 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBC9CC1FB33EC40096A150 /* ViewController.swift */; };
 		C7EBC9CF1FB33EC40096A150 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7EBC9CE1FB33EC40096A150 /* Assets.xcassets */; };
 		C7EBC9D21FB33EC40096A150 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7EBC9D01FB33EC40096A150 /* Main.storyboard */; };
+		C7EBC9DB1FB3407E0096A150 /* MBPasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EBC9DA1FB3407E0096A150 /* MBPasswordField.swift */; };
+		C7EBC9DD1FB5D6180096A150 /* share.eps in Resources */ = {isa = PBXBuildFile; fileRef = C7EBC9DC1FB5D6180096A150 /* share.eps */; };
+		C7EBC9DF1FB5FCD20096A150 /* show.eps in Resources */ = {isa = PBXBuildFile; fileRef = C7EBC9DE1FB5FCD20096A150 /* show.eps */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +24,9 @@
 		C7EBC9D11FB33EC40096A150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C7EBC9D31FB33EC40096A150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7EBC9D41FB33EC40096A150 /* MBPasswordField.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MBPasswordField.entitlements; sourceTree = "<group>"; };
+		C7EBC9DA1FB3407E0096A150 /* MBPasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBPasswordField.swift; sourceTree = "<group>"; };
+		C7EBC9DC1FB5D6180096A150 /* share.eps */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = share.eps; sourceTree = "<group>"; };
+		C7EBC9DE1FB5FCD20096A150 /* show.eps */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = show.eps; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,9 @@
 				C7EBC9D01FB33EC40096A150 /* Main.storyboard */,
 				C7EBC9D31FB33EC40096A150 /* Info.plist */,
 				C7EBC9D41FB33EC40096A150 /* MBPasswordField.entitlements */,
+				C7EBC9DC1FB5D6180096A150 /* share.eps */,
+				C7EBC9DE1FB5FCD20096A150 /* show.eps */,
+				C7EBC9DA1FB3407E0096A150 /* MBPasswordField.swift */,
 			);
 			path = MBPasswordField;
 			sourceTree = "<group>";
@@ -123,7 +132,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7EBC9CF1FB33EC40096A150 /* Assets.xcassets in Resources */,
+				C7EBC9DD1FB5D6180096A150 /* share.eps in Resources */,
 				C7EBC9D21FB33EC40096A150 /* Main.storyboard in Resources */,
+				C7EBC9DF1FB5FCD20096A150 /* show.eps in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7EBC9CD1FB33EC40096A150 /* ViewController.swift in Sources */,
+				C7EBC9DB1FB3407E0096A150 /* MBPasswordField.swift in Sources */,
 				C7EBC9CB1FB33EC40096A150 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
