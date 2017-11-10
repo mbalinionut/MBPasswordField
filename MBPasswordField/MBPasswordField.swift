@@ -10,6 +10,31 @@ import Cocoa
 
 class MBPasswordField: NSView {
 	
+	public var passwordString: String {
+		get{
+			return secureTextField.stringValue
+		}
+		set{
+			secureTextField.stringValue = newValue
+		}
+	}
+	
+	public var showButtonImageName: String {
+		get{
+			guard (btnShowPassword.image?.name()) != nil else {
+				return ""
+			}
+			return (btnShowPassword.image?.name())!.rawValue
+		}
+		set{ // If the given image is nill display quickLookTemplate
+			if NSImage(named: NSImage.Name(rawValue: newValue)) != nil {
+				btnShowPassword.image = NSImage(named: NSImage.Name(rawValue: newValue))
+			}else{
+				btnShowPassword.image = NSImage(named: NSImage.Name.quickLookTemplate)
+			}
+		}
+	}
+	
 	@IBInspectable var imageWidth: CGFloat = 22
 	
 	@IBInspectable var fontSize: CGFloat = 12.0 {
@@ -50,7 +75,6 @@ class MBPasswordField: NSView {
 	
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-
 		self.layer?.borderWidth = borderWidth
 		self.layer?.borderColor = borderColor.cgColor
 		self.layer?.cornerRadius = cornerRadius
@@ -59,41 +83,38 @@ class MBPasswordField: NSView {
     }
 	
 	override func awakeFromNib() {
-
 		drawShowPasswordButton()
 		drawTextField()
 		drawSecureTextField()
 		showSecureTextField()
-		trackingAreaBtnShowPassword()
 	}
 	
-	
 	func drawShowPasswordButton(){
-		
 		let rectForShowPassBtn = NSRect(x: Int(self.frame.width - imageWidth - 5), y: Int((self.frame.height - imageWidth)/2), width: Int(imageWidth), height:Int(imageWidth))
 		btnShowPassword = NSButton(frame: rectForShowPassBtn)
 		btnShowPassword.isBordered = false
 		btnShowPassword.setButtonType(.momentaryChange)
 		btnShowPassword.imagePosition = .imageOnly
-		btnShowPassword.image = NSImage(named: NSImage.Name(rawValue: "show.eps"))
+		
+		// If an image name is missing then add the quickLookTemplate as image
+		if showButtonImageName == "" {
+			btnShowPassword.image = NSImage(named: NSImage.Name.quickLookTemplate)
+		}
+		
 		btnShowPassword.imageScaling = .scaleProportionallyDown
 		btnShowPassword.target = self
 		btnShowPassword.action = #selector(showFieldForMouseAction)
 		btnShowPassword.sendAction(on: [.leftMouseUp , .leftMouseDown])
 		self.addSubview(btnShowPassword)
-		
 	}
 	
 	@objc func showFieldForMouseAction(){
-	
 		textField.stringValue = secureTextField.stringValue
-		
 		if secureTextIsShown == true {
 			showTextField()
 		}else{
 			showSecureTextField()
 		}
-		
 	}
 	
 	func showTextField(){
@@ -103,7 +124,6 @@ class MBPasswordField: NSView {
 	}
 	
 	func showSecureTextField(){
-		
 		secureTextField.isHidden = false
 		textField.isHidden = true
 		secureTextIsShown = true
@@ -118,8 +138,6 @@ class MBPasswordField: NSView {
 		secureTextField.isBordered = false
 		self.addSubview(secureTextField)
 	}
-	
-	
 	
 	func drawSecureTextField() {
 		let rectForTextField = NSRect(x: 0, y: 0, width: self.frame.width - imageWidth, height: self.frame.height - 2)
@@ -136,13 +154,24 @@ class MBPasswordField: NSView {
 		textField.isHidden = true
 		secureTextIsShown = true
 	}
-	
-	func trackingAreaBtnShowPassword() {
-		let options = (NSTrackingArea.Options.mouseEnteredAndExited.rawValue | NSTrackingArea.Options.activeAlways.rawValue)
-		let trackingArea =  NSTrackingArea(rect: self.bounds, options: NSTrackingArea.Options(rawValue: options), owner: self, userInfo: nil)
+
+	var trackingArea:NSTrackingArea!
+	override func updateTrackingAreas() {
+		if trackingArea != nil {
+			self.removeTrackingArea(trackingArea)
+		}
+		trackingArea = NSTrackingArea(rect: self.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited, NSTrackingArea.Options.activeAlways], owner: self, userInfo: nil)
 		self.btnShowPassword.addTrackingArea(trackingArea)
+
+		let mouseLocation = self.window?.mouseLocationOutsideOfEventStream
+		if mouseLocation != nil {
+			let loc = self.convert(mouseLocation!, from: nil)
+			if NSPointInRect(loc, self.bounds) {
+				self.mouseEntered(with: NSEvent())
+			} else {
+				self.mouseExited(with: NSEvent())
+			}
+		}
 	}
 	
-	
-    
 }

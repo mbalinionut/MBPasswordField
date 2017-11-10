@@ -709,8 +709,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lhl-yq-ImQ">
+                                <rect key="frame" x="200" y="57" width="80" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="roundRect" title="Show" bezelStyle="roundedRect" image="NSLockUnlockedTemplate" imagePosition="right" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jti-kh-f6s">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="showpass:" target="XfG-lQ-9wD" id="y0i-G2-dFZ"/>
+                                </connections>
+                            </button>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W3f-Cg-gD9" customClass="MBPasswordField" customModule="MBPasswordField" customModuleProvider="target">
-                                <rect key="frame" x="96" y="131" width="263" height="26"/>
+                                <rect key="frame" x="109" y="134" width="263" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
@@ -732,10 +743,16 @@
                             </customView>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="MBPassField" destination="W3f-Cg-gD9" id="tKl-L9-WQe"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="655"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSLockUnlockedTemplate" width="10" height="14"/>
+    </resources>
 </document>
