@@ -1,5 +1,7 @@
 # MBPasswordField
-Password text field capable of showing plain text
+Password text field capable of showing plain text written in Swift 4.
+Just subclass an NSView with MBPasswordField and you are done.
+
 ```swift
 var passField: MBPasswordField!
 ```
