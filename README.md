@@ -1,6 +1,7 @@
 # MBPasswordField
 Password text field capable of showing plain text written in Swift 4.
-Just subclass an NSView with MBPasswordField and you are done.
+
+Just add a Custom view and subclass it with MBPasswordField and you are done.
 
 Add an custom show icon or use the default quick look icon
 ```swift
